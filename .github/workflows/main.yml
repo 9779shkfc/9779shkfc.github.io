@@ -26,10 +26,14 @@ jobs:
       - name: Run static export
         run: python render_static.py
 
-      - name: Debug public folder
+      - name: Verify public folder
         run: |
+          if [ ! -f public/index.html ]; then
+            echo "ERROR: public/index.html missing"
+            exit 1
+          fi
           echo "---- ls public ----"
-          ls -la public
+          ls -R public
           echo "---- head index.html ----"
           head -n 40 public/index.html
 
