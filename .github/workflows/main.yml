@@ -11,6 +11,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs: 
+      artifact-name: github-pages
     steps:
     - uses: actions/checkout@v5
     - uses: actions/setup-python@v6
@@ -40,10 +42,11 @@ jobs:
         pathlib.Path('public/index.html').write_text(html_content, encoding='utf-8') 
         PY
             
-    - name: Upload artifact
-      uses: actions/upload-artifact@v4
-      with: 
-        path: public
+    - name: Upload Pages artifact (v4) 
+      uses: actions/upload-pages-artifact@v4 
+      with:  
+        path: public 
+        artifact_name: github-pages
         
   # Deploy job
   deploy:
