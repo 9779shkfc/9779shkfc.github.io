@@ -1,0 +1,91 @@
+<div class="celebrity-grid">
+  {% if embeds.youtube %}
+    <div class="celebrity-card">
+      <div class="card-icon"><i class="fab fa-youtube"></i></div>
+      <h3>YouTube</h3>
+      <p><a href="{{ embeds.youtube }}" target="_blank" rel="noopener noreferrer">Visit YouTube Channel</a></p>
+    </div>
+  {% endif %}
+
+  {% if embeds.x %}
+    <div class="celebrity-card">
+      <div class="card-icon"><i class="fab fa-x-twitter"></i></div>
+      <h3>X</h3>
+      <p><a href="{{ embeds.x }}" target="_blank" rel="noopener noreferrer">Visit X Profile</a></p>
+    </div>
+  {% endif %}
+
+  {% if embeds.instagram %}
+    <div class="celebrity-card">
+      <div class="card-icon"><i class="fab fa-instagram"></i></div>
+      <h3>Instagram</h3>
+      <p><a href="{{ embeds.instagram }}" target="_blank" rel="noopener noreferrer">Visit Instagram Profile</a></p>
+    </div>
+  {% endif %}
+
+  {% if embeds.instagram_pets %}
+    <div class="celebrity-card">
+      <div class="card-icon"><i class="fab fa-instagram"></i></div>
+      <h3>Instagram(Pets)</h3>
+      <p><a href="{{ embeds.instagram_pets }}" target="_blank" rel="noopener noreferrer">Visit Pets Instagram</a></p>
+    </div>
+  {% endif %}
+
+  {% if embeds.tiktok %}
+    <div class="celebrity-card">
+      <div class="card-icon"><i class="fab fa-tiktok"></i></div>
+      <h3>TikTok</h3>
+      <p><a href="{{ embeds.tiktok }}" target="_blank" rel="noopener noreferrer">Visit TikTok Profile</a></p>
+    </div>
+  {% endif %}
+</div>
+
+<style>
+.celebrity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* exactly 2 cards per row */
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 700px) {
+  .celebrity-grid {
+    grid-template-columns: 1fr; /* stack on small screens */
+  }
+}
+
+.celebrity-card {
+  background: var(--card, #0b1220);
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.celebrity-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+}
+
+.card-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent, #06b6d4);
+}
+
+.celebrity-card h3 {
+  margin: 0.5rem 0;
+  font-weight: 500;
+}
+
+.celebrity-card a {
+  color: var(--accent, #06b6d4);
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.celebrity-card a:hover {
+  text-decoration: underline;
+}
+</style>

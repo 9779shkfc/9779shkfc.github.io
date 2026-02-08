@@ -1,0 +1,27 @@
+{# Reusable partial used by laptop and mobile pages #}
+<div class="grid media-grid">
+  {% if images %}
+    {% for img in images %}
+      <div class="thumb">
+        <a href="{{ img.url }}" target="_blank" rel="noopener noreferrer">
+          <img src="{{ img.url }}" alt="{{ img.name }}" class="wall-thumb">
+        </a>
+        <div style="margin-top:0.5rem; display:flex; gap:0.5rem; align-items:center; justify-content:space-between;">
+          <a class="btn" href="{{ img.url }}" download="{{ img.name }}">Download</a>
+          <span style="font-size:0.8rem; color:rgba(230,238,246,0.8)">{{ img.name }}</span>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No wallpapers found. Please upload images to <code>static/images/wallpapers/laptop</code> or <code>static/images/wallpapers/mobile</code>.</p>
+  {% endif %}
+</div>
+
+<style>
+.media-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.thumb { background: var(--card, #0b1220); padding: 0.5rem; border-radius: 8px; display:flex; flex-direction:column; }
+.wall-thumb { width: 100%; height: auto; border-radius: 6px; display:block; object-fit:cover; }
+</style>

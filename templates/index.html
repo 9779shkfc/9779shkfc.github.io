@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="home-hero">
+  <div class="container">
+    <h1>Welcome to the KaoJaneJaneKao Hong Kong FanClub</h1>
+    <p>Explore our community and stay connected. Click on the Linktree to join us.</p>
+
+    <div class="home-links">
+      <!-- Only Linktree button remains -->
+      <a class="btn external-link" href="https://linktr.ee/9779s_HKFC" target="_blank" rel="noopener noreferrer">
+        Linktree
+      </a>
+    </div>
+
+    <!-- New image section -->
+    <div class="home-images">
+      <img src="{{ url_for('static', filename='images/kao.jpg') }}" alt="Kao" class="home-img">
+      <img src="{{ url_for('static', filename='images/jane.jpg') }}" alt="Jane" class="home-img">
+    </div>
+  </div>
+</section>
+
+<style>
+.home-hero { 
+  padding: 3rem 1rem; 
+  text-align: center; 
+}
+.home-hero .container { 
+  max-width: var(--max-width); 
+  margin: 0 auto; 
+}
+.home-links { 
+  margin-top: 1.25rem; 
+  display:flex; 
+  gap:0.75rem; 
+  justify-content:center; 
+  flex-wrap:wrap; 
+}
+.home-links .btn.external-link {
+  background: #4CAF50; /* distinct green for external link */
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+}
+.home-links .btn.external-link:hover {
+  background: #45a049;
+}
+
+/* New image section */
+.home-images {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.home-img {
+  max-width: 45%;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+</style>
+{% endblock %}
