@@ -1,0 +1,70 @@
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs: 
+      artifact-name: github-pages
+    steps:
+    - uses: actions/checkout@v5
+    - uses: actions/setup-python@v6
+      with:
+        python-version: '3.14' 
+    - run:
+        pip install -r requirements.txt
+
+    - name: Install markdown converter 
+      run: | 
+        python -m pip install --upgrade pip 
+        pip install markdown 
+    
+    - name: Convert README.md to index.html 
+      run: | 
+        mkdir -p public 
+        python - <<'PY' 
+        import markdown, pathlib, html 
+        readme = pathlib.Path('README.md') 
+        if not readme.exists(): 
+                          # fallback: create a simple index 
+          html_content = "<!doctype html><html><head><meta charset='utf-8'><title>Site</title></head><body><h1>No README.md found</h1></body></html>" 
+        else: 
+          md = readme.read_text(encoding='utf-8') 
+          body = markdown.markdown(md, extensions=['fenced_code','tables']) 
+          html_content = f"<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>{html.escape(readme.stem)}</title></head><body>{body}</body></html>" 
+        pathlib.Path('public/index.html').write_text(html_content, encoding='utf-8') 
+        PY
+            
+    - name: Upload Pages artifact (v4) 
+      uses: actions/upload-pages-artifact@v4 
+      with:  
+        path: public 
+        artifact_name: github-pages
+        
+  # Deploy job
+  deploy:
+    # Add a dependency to the build job
+    needs: build
+
+    environment:
+      name: github-pages
+
+
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
+    # Specify runner + deployment step
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 # or specific "vX.X.X" version tag for this action
