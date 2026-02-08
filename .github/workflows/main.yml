@@ -41,7 +41,15 @@ jobs:
           html_content = f"<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>{html.escape(readme.stem)}</title></head><body>{body}</body></html>" 
         pathlib.Path('public/index.html').write_text(html_content, encoding='utf-8') 
         PY
-            
+
+    - name: Build static site 
+      run: | 
+        .venv/bin/activate || true 
+        # Or if using render_static.py # 
+        python render_static.py 
+        # Ensure output is in public/ 
+        ls -la public || true
+    
     - name: Upload Pages artifact (v4) 
       uses: actions/upload-pages-artifact@v4 
       with:  
@@ -55,7 +63,6 @@ jobs:
 
     environment:
       name: github-pages
-
 
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
