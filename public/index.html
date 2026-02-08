@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Fan Club</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="/" data-ajax>Home</a>
+      <a href="/kao/" data-ajax>Kao</a>
+      <a href="/jane/" data-ajax>Jane</a>
+      <a href="/love-design/" data-ajax>Love Design</a>
+      <a href="/media/laptop/" data-ajax>Wallpapers Laptop</a>
+      <a href="/media/mobile/" data-ajax>Wallpapers Mobile</a>
+    </nav>
+  </header>
+
+  <main id="content">
+    
+<section class="home-hero">
+  <div class="container">
+    <h1>Welcome to the KaoJaneJaneKao Hong Kong FanClub</h1>
+    <p>Explore our community and stay connected. Click on the Linktree to join us.</p>
+
+    <div class="home-links">
+      <!-- Only Linktree button remains -->
+      <a class="btn external-link" href="https://linktr.ee/9779s_HKFC" target="_blank" rel="noopener noreferrer">
+        Linktree
+      </a>
+    </div>
+
+    <!-- New image section -->
+    <div class="home-images">
+      <img src="/static/images/kao.jpg" alt="Kao" class="home-img">
+      <img src="/static/images/jane.jpg" alt="Jane" class="home-img">
+    </div>
+  </div>
+</section>
+
+<style>
+.home-hero { 
+  padding: 3rem 1rem; 
+  text-align: center; 
+}
+.home-hero .container { 
+  max-width: var(--max-width); 
+  margin: 0 auto; 
+}
+.home-links { 
+  margin-top: 1.25rem; 
+  display:flex; 
+  gap:0.75rem; 
+  justify-content:center; 
+  flex-wrap:wrap; 
+}
+.home-links .btn.external-link {
+  background: #4CAF50; /* distinct green for external link */
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+}
+.home-links .btn.external-link:hover {
+  background: #45a049;
+}
+
+/* New image section */
+.home-images {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.home-img {
+  max-width: 45%;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+</style>
+
+  </main>
+
+  <footer class="site-footer">
+    <div id="bgm-player" class="bgm-player">
+      <button id="prev">⏮</button>
+      <button id="play-pause">▶️</button>
+      <button id="next">⏭</button>
+      <input id="volume" type="range" min="0" max="1" step="0.01" value="1" style="width:100px;">
+      <div id="progress-container">
+        <div id="progress-bar"></div>
+      </div>
+      <span id="time-display">0:00 / 0:00</span>
+
+      <audio id="bgm" preload="auto">
+        <source src="/static/bgm/track1.mp3" type="audio/mpeg">
+        <source src="/static/bgm/track2.mp3" type="audio/mpeg">
+        <source src="/static/bgm/track3.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+    <p class="copyright">
+      Copyright © 2026 9779s_HKFC All Rights Reserved.
+    </p>
+  </footer>
+
+
+  <script src="/static/js/site.js"></script>
+</body>
+</html>

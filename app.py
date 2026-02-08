@@ -15,9 +15,8 @@ def create_app():
 
     # Root route renders homepage
     @app.route('/')
-    def index():
-        return render_template('index.html', title='Home')
-
+    def index_for_export(): 
+        return render_template('index.html') 
     return app
 
 if __name__ == '__main__':
