@@ -53,6 +53,10 @@ jobs:
     # Add a dependency to the build job
     needs: build
 
+    environment:
+      name: github-pages
+
+
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
       pages: write      # to deploy to Pages
